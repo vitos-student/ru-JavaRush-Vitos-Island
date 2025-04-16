@@ -1,7 +1,8 @@
 package entity;
 
+import repository.VarFinal;
+
 public class Island {
-    int x=5;
-    int y=5;
-    Location[][] locations=new Location[x][y];
+
+    Location[][] locations=new Location[VarFinal.X][VarFinal.Y];
 }
