@@ -1,11 +1,12 @@
 package utils;
 
 import entity.Location;
+import repository.ConfigVar;
 
 public class RandomizerLocation {
 
     public int getLocation()
     {
-        return 1;
+        return  (int)(Math.random()* ConfigVar.X);
     }
 }

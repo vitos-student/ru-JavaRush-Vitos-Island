@@ -1,5 +1,7 @@
 package entity;
 
+import repository.ConfigVar;
+
 /**
  * класс растения
  * предполагается :
@@ -10,23 +12,19 @@ package entity;
 
 public class Plant {
     private double weight;
-    private Location[][] locationsPlants;
+    private Location locationsPlants;
 
-    public Plant() {
-        this.weight=20;
-        this.locationsPlants = new Location[1][1];
+    public Plant(Location location) {
+        this.weight= ConfigVar.WEIGHT_PLANT;
+        this.locationsPlants = location;
     }
 
-
-    public Plant(double weight) {
-        this.weight = weight;
-    }
 
     public double getWeight() {
         return weight;
     }
 
-    public Location[][] getLocationsPlants() {
+    public Location getLocationsPlants() {
         return locationsPlants;
     }
 
@@ -34,7 +32,7 @@ public class Plant {
         this.weight = weight;
     }
 
-    public void setLocationsPlants(Location[][] locationsPlants) {
+    public void setLocationsPlants(Location locationsPlants) {
         this.locationsPlants = locationsPlants;
     }
 
