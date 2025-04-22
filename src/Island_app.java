@@ -1,16 +1,17 @@
+import Simulation.Simulation;
 import entity.Island;
-import entity.Location;
-import entity.Plant;
-import utils.RandomizerLocation;
+import service.Statistic;
 
 public class Island_app {
     public static void main(String[] args) {
-        System.out.println("Привет");
+        System.out.println("Начало симуляции");
         Island island = new Island();
         island.initLocation();
         island.initPlant();
-        System.out.println(island.getSumPlant());
+        Statistic statistic = new Statistic(island);
+        Simulation simulation = new Simulation(island); // Создание движка симуляции
+        simulation.startSimulation();
 
-
+        System.out.println("Конец симуляции");
     }
 }

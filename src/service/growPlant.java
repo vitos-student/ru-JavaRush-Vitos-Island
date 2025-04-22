@@ -1,9 +1,11 @@
 package service;
 
-public class growPlant implements Runnable{
+import entity.Plant;
 
-    @Override
-    public void run() {
+public class growPlant{
+   private final Plant plants;
+
+    public void addPlant(Plant plant){
 
     }
 }

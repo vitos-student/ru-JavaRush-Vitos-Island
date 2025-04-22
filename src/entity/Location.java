@@ -1,7 +1,5 @@
 package entity;
 
-import repository.ConfigVar;
-
 public class Location {
           private int x;
           private int y;
