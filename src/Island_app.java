@@ -8,10 +8,16 @@ public class Island_app {
         Island island = new Island();
         island.initLocation();
         island.initPlant();
-        Statistic statistic = new Statistic(island);
+        Statistic statistic = new Statistic();
+        System.out.println(statistic.statisticFacts(island));
+        System.out.println("я тут");
         Simulation simulation = new Simulation(island); // Создание движка симуляции
         simulation.startSimulation();
+        island.addPlant();
 
+
+        System.out.println(statistic.statisticFacts(island));
+        simulation.stopSimulation();
         System.out.println("Конец симуляции");
     }
 }

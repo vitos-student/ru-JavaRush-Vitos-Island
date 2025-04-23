@@ -8,7 +8,7 @@ public class Island {
     private int x = ConfigVar.X;
     private int y = ConfigVar.Y;
     public Location[][] locations;
-    private ConcurrentHashMap<Class<? extends Location>, Integer> plants = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Class<? extends Location>, Integer> plants = new ConcurrentHashMap<>();
 
     public Island() {
         this.locations = new Location[x][y];
@@ -41,5 +41,13 @@ public class Island {
         return sum;
     }
 
+    public Location[][] getLocations() {
+        return locations;
+    }
+
+
+    public void addPlant(){
+        plants.forEach((key, value) -> plants.compute(key, (k, v) -> v + 10));
+    }
 
 }

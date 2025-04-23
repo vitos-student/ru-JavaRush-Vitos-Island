@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 
 /* не реализованнный класс */
 /*попытка подгрузить данные из файла*/
+//пока не знаю нужно ли мне это, пока просто оставлю
 
 public class LoadDefaultParamsEaten {
 

@@ -4,8 +4,9 @@ import entity.Island;
 
 public class Statistic {
 
-    public Statistic(Island island) {
-        System.out.println("Всего травы на острове: "+ island.getSumPlant());
+    public String statisticFacts(Island island) {
+       // System.out.println("Всего травы на острове: "+ island.getSumPlant());
+        return "Всего травы на острове: "+ island.getSumPlant();
     }
 
 }
