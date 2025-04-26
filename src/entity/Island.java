@@ -50,4 +50,7 @@ public class Island {
         plants.forEach((key, value) -> plants.compute(key, (k, v) -> v + 10));
     }
 
+    public ConcurrentHashMap<Class<? extends Location>, Integer> getPlants() {
+        return plants;
+    }
 }

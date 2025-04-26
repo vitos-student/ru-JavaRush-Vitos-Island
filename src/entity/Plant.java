@@ -2,6 +2,8 @@ package entity;
 
 import repository.ConfigVar;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * класс растения
  * предполагается :
@@ -11,30 +13,32 @@ import repository.ConfigVar;
  */
 
 public class Plant {
-    private double weight;
-    private Location locationsPlants;
+    private final ConcurrentHashMap<Class<? extends Location>, Integer> plantsS = new ConcurrentHashMap<>();
 
-    public Plant(Location location) {
-        this.weight= ConfigVar.WEIGHT_PLANT;
-        this.locationsPlants = location;
+
+//    public int getSumPlant() {
+//        int sum = 0;
+//        for (int i = 0; i < ConfigVar.X; i++) {
+//            for (int j = 0; j < ConfigVar.Y; j++) {
+//                sum+=plantsS.get(locations[i][j].getClass());
+//            }
+//        }
+//        return sum;
+//    }
+//
+//    public void initPlant() {
+//        for (int i = 0; i < ConfigVar.X; i++) {
+//            for (int j = 0; j < ConfigVar.Y; j++) {
+//                plantsS.put(locations[i][j].getClass(), ConfigVar.WEIGHT_PLANT);
+//            }
+//        }
+//    }
+
+    public void addPlant(){
+        plantsS.forEach((key, value) -> plantsS.compute(key, (k, v) -> v + 10));
     }
 
-
-    public double getWeight() {
-        return weight;
+    public ConcurrentHashMap<Class<? extends Location>, Integer> getPlantsS() {
+        return plantsS;
     }
-
-    public Location getLocationsPlants() {
-        return locationsPlants;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public void setLocationsPlants(Location locationsPlants) {
-        this.locationsPlants = locationsPlants;
-    }
-
-
 }

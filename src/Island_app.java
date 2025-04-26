@@ -3,7 +3,7 @@ import entity.Island;
 import service.Statistic;
 
 public class Island_app {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("Начало симуляции");
         Island island = new Island();
         island.initLocation();
