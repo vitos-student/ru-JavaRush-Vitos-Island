@@ -11,10 +11,11 @@ public class Island_app {
        // island.initPlant();
         Plant plant = new Plant(island.getLocations());/** создаем траву на острове*/
         plant.initPlant();
+        entity.Animal.HerbAnimal.Cow cow = new entity.Animal.HerbAnimal.Cow();
+
         Statistic statistic = new Statistic();
         Simulation simulation = new Simulation(island); // Создание движка симуляции
         simulation.startSimulation();
-      //  island.addPlant();
 
         simulation.stopSimulation();
         System.out.println("Конец симуляции");
