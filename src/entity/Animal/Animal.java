@@ -1,29 +1,32 @@
 package entity.Animal;
 
+import entity.Island;
 import entity.Location;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-public abstract class Animal {
-    protected boolean isAlive = true;
-    protected  String nameAnimal;
+public class Animal {
+    protected boolean isAlive ;
+    protected final String nameAnimal;
     protected final int weight;
     protected final int step;
     protected final int maxCountLocation;
-    protected final int eatAnimal;
-    protected Location[][] locations;
+    private  int eatAnimal;
+    protected final Location location;
 
-    protected Animal(int weight, int step, int maxCountLocation, int eatAnimal) {
+    public Animal(String nameAnimal, int weight, int step, int maxCountLocation, int eatAnimal, Location location) {
+        this.isAlive = true;
+        this.nameAnimal = nameAnimal;
         this.weight = weight;
         this.step = step;
         this.maxCountLocation = maxCountLocation;
         this.eatAnimal = eatAnimal;
+        this.location = location;
     }
 
-
-    public void initAnimal(String name,Location[][] locations){
+    public void initAnimal(String name, Island island){
         System.out.println("Создаем животное:" + name);
-        this.locations=locations;
+      //  this.locations=locations;
     }
 
     public void moveAnimal(){}
@@ -52,19 +55,14 @@ public abstract class Animal {
         return eatAnimal;
     }
 
-    public Location[][] getLocations() {
-        return locations;
-    }
-
     public void setAlive(boolean alive) {
         isAlive = alive;
     }
 
-    public void setNameAnimal(String nameAnimal) {
-        this.nameAnimal = nameAnimal;
+    public void seteEatAnimal(int eatAnimal) {
+        this.eatAnimal += eatAnimal;
     }
 
-    public void setLocations(Location[][] locations) {
-        this.locations = locations;
-    }
+
+
 }
