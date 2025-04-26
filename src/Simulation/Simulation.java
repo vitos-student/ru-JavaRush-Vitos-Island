@@ -2,6 +2,7 @@ package Simulation;
 
 import entity.Island;
 import entity.Location;
+import entity.Plant;
 import service.Statistic;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -15,15 +16,17 @@ public class Simulation {
     private final Island island;
     private final ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(3);
     private final ScheduledExecutorService scheduledExecutorServiceStatistic = Executors.newSingleThreadScheduledExecutor();
-    private final ConcurrentHashMap<Class<? extends Location>, Integer> plantsSim;
+    //private final ConcurrentHashMap<Class<? extends Location>, Integer> plantsSim;
     private final AtomicInteger countDay = new AtomicInteger();
+    Plant plant ;
     Statistic statistic = new Statistic();
 
 
     public Simulation(Island island) {
 
         this.island = island;
-        plantsSim=island.getPlants();
+        this.plant = new Plant(island.getLocations());
+      //  plantsSim=island.getPlants();
     }
 
 
@@ -34,7 +37,9 @@ public class Simulation {
         scheduledExecutorServiceStatistic.scheduleAtFixedRate(()->soutStatistic(), 1,1,TimeUnit.SECONDS);
 
 
-        scheduledExecutorService.scheduleAtFixedRate(()->addPlant2(),
+        scheduledExecutorService.scheduleAtFixedRate(
+                //()->addPlant2(),
+                ()->plant.addPlant(),
                 1,
                 5,
                 TimeUnit.SECONDS);
@@ -50,9 +55,9 @@ public class Simulation {
 
 
 
-    public void addPlant2(){
-        plantsSim.forEach((key, value) -> plantsSim.compute(key, (k, v) -> v + 10));
-    }
+//    public void addPlant2(){
+//        plantsSim.forEach((key, value) -> plantsSim.compute(key, (k, v) -> v + 10));
+//    }
 
     public void stopSimulation() {
         isRunning = false;
@@ -66,7 +71,7 @@ public class Simulation {
         if (currentDay%5==0)
         {
             System.out.println("Статистика развития:");
-            System.out.println(statistic.statisticFacts(island));
+            System.out.println(statistic.statisticFacts(island,plant));
         }
     }
 

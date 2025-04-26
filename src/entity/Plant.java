@@ -9,36 +9,56 @@ import java.util.concurrent.ConcurrentHashMap;
  * предполагается :
  * есть вес, от 0 до 100 кг
  * есть локация, где данная трава будет расти.
- * локацию задаю рандомно.
  */
 
 public class Plant {
     private final ConcurrentHashMap<Class<? extends Location>, Integer> plantsS = new ConcurrentHashMap<>();
+    private final Location[][] locationsPlant;
 
+    public Location[][] getLocationsPlant() {
+        return locationsPlant;
+    }
 
-//    public int getSumPlant() {
-//        int sum = 0;
+    public Plant(Location[][] locations) {
+        this.locationsPlant = locations;
+    }
+
+    public int getSumPlant() {
+        int sum = 0;
 //        for (int i = 0; i < ConfigVar.X; i++) {
 //            for (int j = 0; j < ConfigVar.Y; j++) {
-//                sum+=plantsS.get(locations[i][j].getClass());
+//                sum += plantsS.get(locationsPlant[i][j].getClass());
 //            }
 //        }
-//        return sum;
-//    }
-//
-//    public void initPlant() {
-//        for (int i = 0; i < ConfigVar.X; i++) {
-//            for (int j = 0; j < ConfigVar.Y; j++) {
-//                plantsS.put(locations[i][j].getClass(), ConfigVar.WEIGHT_PLANT);
-//            }
-//        }
-//    }
+        for (Integer value : plantsS.values()) {
+            sum += (int) value;
+        }
+        return sum;
+    }
 
-    public void addPlant(){
-        plantsS.forEach((key, value) -> plantsS.compute(key, (k, v) -> v + 10));
+    public void initPlant() {
+        for (int i = 0; i < ConfigVar.X; i++) {
+            for (int j = 0; j < ConfigVar.Y; j++) {
+                plantsS.put(locationsPlant[i][j].getClass(), ConfigVar.WEIGHT_PLANT);
+            }
+        }
+        System.out.println("Трава начала расти!!!");
+    }
+
+    /**
+     * рост травы от 0 до 100
+     */
+    public void addPlant() {
+        plantsS.forEach((key, value) -> {
+            if (value <= 90) {
+                plantsS.compute(key, (k, v) -> v + 10);
+            }
+        });
     }
 
     public ConcurrentHashMap<Class<? extends Location>, Integer> getPlantsS() {
         return plantsS;
     }
+
+
 }

@@ -1,5 +1,6 @@
 import Simulation.Simulation;
 import entity.Island;
+import entity.Plant;
 import service.Statistic;
 
 public class Island_app {
@@ -7,16 +8,14 @@ public class Island_app {
         System.out.println("Начало симуляции");
         Island island = new Island();
         island.initLocation();
-        island.initPlant();
+       // island.initPlant();
+        Plant plant = new Plant(island.getLocations());/** создаем траву на острове*/
+        plant.initPlant();
         Statistic statistic = new Statistic();
-        System.out.println(statistic.statisticFacts(island));
-        System.out.println("я тут");
         Simulation simulation = new Simulation(island); // Создание движка симуляции
         simulation.startSimulation();
-        island.addPlant();
+      //  island.addPlant();
 
-
-        System.out.println(statistic.statisticFacts(island));
         simulation.stopSimulation();
         System.out.println("Конец симуляции");
     }
