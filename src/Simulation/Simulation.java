@@ -16,7 +16,6 @@ public class Simulation {
     private final Island island;
     private final ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(3);
     private final ScheduledExecutorService scheduledExecutorServiceStatistic = Executors.newSingleThreadScheduledExecutor();
-    //private final ConcurrentHashMap<Class<? extends Location>, Integer> plantsSim;
     private final AtomicInteger countDay = new AtomicInteger();
     Plant plant ;
     Statistic statistic = new Statistic();

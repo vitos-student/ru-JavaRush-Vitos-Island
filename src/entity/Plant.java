@@ -12,8 +12,8 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 public class Plant {
-    private final ConcurrentHashMap<Class<? extends Location>, Integer> plantsS = new ConcurrentHashMap<>();
-    private final Location[][] locationsPlant;
+    private  final ConcurrentHashMap<Class<? extends Location>, Integer> plantsS = new ConcurrentHashMap<>();
+    private  final Location[][] locationsPlant;
 
     public Location[][] getLocationsPlant() {
         return locationsPlant;
@@ -25,12 +25,7 @@ public class Plant {
 
     public int getSumPlant() {
         int sum = 0;
-//        for (int i = 0; i < ConfigVar.X; i++) {
-//            for (int j = 0; j < ConfigVar.Y; j++) {
-//                sum += plantsS.get(locationsPlant[i][j].getClass());
-//            }
-//        }
-        for (Integer value : plantsS.values()) {
+        for (Integer value : getPlantsS().values()) {
             sum += (int) value;
         }
         return sum;

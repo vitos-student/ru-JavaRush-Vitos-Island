@@ -1,9 +1,7 @@
 package service;
 
 import entity.Island;
-import entity.Location;
 import entity.Plant;
-import repository.ConfigVar;
 
 public class Statistic {
 
