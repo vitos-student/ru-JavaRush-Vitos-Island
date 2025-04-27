@@ -12,11 +12,11 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 public class Plant {
-    private  final ConcurrentHashMap<Location, Integer> plantsS = new ConcurrentHashMap<>();
+    private  final ConcurrentHashMap<Location, Integer> plants = new ConcurrentHashMap<>();
 
     public int getSumPlant() {
         int sum = 0;
-        for (Integer value : getPlantsS().values()) {
+        for (Integer value : getPlants().values()) {
             sum += (int) value;
         }
         return sum;
@@ -25,14 +25,15 @@ public class Plant {
     public  Plant(Location[][] location) {
         for(Location[] locY:location){
             for(Location locXY:locY){
-                plantsS.put(locXY, ConfigVar.WEIGHT_PLANT);
+                plants.put(locXY, ConfigVar.WEIGHT_PLANT);
             }
         }
         System.out.println("Трава начала расти!!!");
     }
 
-    public ConcurrentHashMap<Location, Integer> getPlantsS() {
-        return this.plantsS;
+    public ConcurrentHashMap<Location, Integer> getPlants() {
+        return this.plants;
     }
+
 
 }

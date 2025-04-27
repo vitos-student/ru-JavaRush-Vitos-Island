@@ -14,15 +14,15 @@ public class ServicePlant {
      * рост травы от 0 до 100
      */
     public void addPlant() {
-        plantsS.getPlantsS().forEach((key, value) -> {
+        plantsS.getPlants().forEach((key, value) -> {
             if (value <= 90) {
-                plantsS.getPlantsS().compute(key, (k, v) -> v + 10);
+                plantsS.getPlants().compute(key, (k, v) -> v + 10);
             }
         });
     }
 
     public int getValue(Location location){
-        return plantsS.getPlantsS().getOrDefault(location, 0).intValue();    }
+        return plantsS.getPlants().getOrDefault(location, 0).intValue();    }
 
 
 }

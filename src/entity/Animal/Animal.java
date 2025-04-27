@@ -16,16 +16,33 @@ public class Animal {
     protected final int step;
     protected final int maxCountLocation;
     private int eatAnimal;
+    private int satiety;
+    private int satietyMax;
     protected final Location location;
 
-    public Animal(String nameAnimal, int weight, int step, int maxCountLocation, int eatAnimal, Location location) {
-        this.isAlive = true;
-        this.nameAnimal = nameAnimal;
-        this.weight = weight;
-        this.step = step;
-        this.maxCountLocation = maxCountLocation;
-        this.eatAnimal = eatAnimal;
-        this.location = location;
+
+    public Animal(String nameAnimal, int weight, int step, int maxCountLocation, int eatAnimal, int satiety, int satietyMax, Location location) {
+        this.isAlive = true;                       //признак живой или нет
+        this.nameAnimal = nameAnimal;              //животное
+        this.weight = weight;                      //вес
+        this.step = step;                          //шаг движения
+        this.maxCountLocation = maxCountLocation;  //max колличество на острове
+        this.eatAnimal = eatAnimal;                //потребление еды
+        this.satiety=satiety;
+        this.satietyMax =satietyMax;               //мах сытость
+        this.location = location;                  //локация
+    }
+
+    public int getSatiety() {
+        return satiety;
+    }
+
+    public void setSatiety(int satiety) {
+        this.satiety = satiety;
+    }
+
+    public int getSatietyMax() {
+        return satietyMax;
     }
 
     public void initAnimal(String name, Island island) {
@@ -71,8 +88,10 @@ public class Animal {
      * животные кушают.
      */
 
-    public void setEatAnimal(int eatAnimal) {
-        this.eatAnimal += eatAnimal;
+    public void setEatAnimal(Animal animal) {
+        if (animal.satiety<animal.satietyMax) {
+            this.satiety += eatAnimal;
+        }
     }
 
     public Location getLocation() {

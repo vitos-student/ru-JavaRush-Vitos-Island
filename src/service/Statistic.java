@@ -5,9 +5,12 @@ import entity.Plant;
 
 public class Statistic {
 
-    public String statisticFacts(Island island, Plant plant) {
-        return "Всего травы на острове: "+plant.getSumPlant();
+    public String statisticFacts(Island island, Plant plant,ServiceAnimal serviceAnimal) {
+        return "Всего травы на острове: "+plant.getSumPlant()
+                + "\n"
+                + "Общая сытость:" + serviceAnimal.getSumAllSatiety();
     }
+
 
 
 }

@@ -2,7 +2,7 @@ package Simulation;
 
 import entity.Island;
 import entity.Plant;
-import service.InitAnimal;
+import service.ServiceAnimal;
 import service.ServicePlant;
 import service.Statistic;
 
@@ -19,14 +19,14 @@ public class Simulation {
     private final AtomicInteger countDay = new AtomicInteger();
     Plant plant;
     Statistic statistic = new Statistic();
-    InitAnimal initAnimal;
+    ServiceAnimal serviceAnimal;
     ServicePlant servicePlant;
 
 
     public Simulation(Island island,Plant plants) {
         this.island = island;
         this.plant = plants;
-        this.initAnimal = new InitAnimal(island);
+        this.serviceAnimal = new ServiceAnimal(island);
         this.servicePlant = new ServicePlant(plant);
     }
 
@@ -35,22 +35,22 @@ public class Simulation {
         if (isRunning) return;
         isRunning = true;
 
-
-
-        System.out.println(initAnimal.getSumEatAnimal());
-        initAnimal.addAnimalWeight(plant);
-
-        System.out.println(initAnimal.getSumEatAnimal());
-
+        /**  отдельный сервис для смены дня          */
         scheduledExecutorServiceStatistic.scheduleAtFixedRate(() -> soutStatistic(), 1, 1, TimeUnit.SECONDS);
 
-
+       /**    сервисы с растениями и животными         */
         scheduledExecutorService.scheduleAtFixedRate(
-                //()->addPlant2(),
                 () -> servicePlant.addPlant(),
                 1,
                 5,
                 TimeUnit.SECONDS);
+
+        scheduledExecutorService.scheduleAtFixedRate(
+                () -> serviceAnimal.addAnimalWeight(plant),
+                1,
+                5,
+                TimeUnit.SECONDS);
+
 
         try {
             TimeUnit.MINUTES.sleep(1);
@@ -71,7 +71,7 @@ public class Simulation {
         System.out.println("День :" + currentDay);
         if (currentDay % 5 == 0) {
             System.out.println("Статистика развития:");
-            System.out.println(statistic.statisticFacts(island, plant));
+            System.out.println(statistic.statisticFacts(island, plant,serviceAnimal));
         }
     }
 
