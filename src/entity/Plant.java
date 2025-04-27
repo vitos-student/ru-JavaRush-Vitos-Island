@@ -15,8 +15,8 @@ public class Plant {
     private  final ConcurrentHashMap<Class<? extends Location>, Integer> plantsS = new ConcurrentHashMap<>();
     private  final Location[][] locationsPlant;
 
-    public Location[][] getLocationsPlant() {
-        return locationsPlant;
+    public Location getLocationsPlant(int x,int y) {
+        return locationsPlant[x][y];
     }
 
     public Plant(Location[][] locations) {
@@ -31,10 +31,10 @@ public class Plant {
         return sum;
     }
 
-    public void initPlant() {
-        for (int i = 0; i < ConfigVar.X; i++) {
-            for (int j = 0; j < ConfigVar.Y; j++) {
-                plantsS.put(locationsPlant[i][j].getClass(), ConfigVar.WEIGHT_PLANT);
+    public void initPlant(Location[][] location) {
+        for(Location[] locY:location){
+            for(Location locXY:locY){
+                plantsS.put(locXY.getClass(), ConfigVar.WEIGHT_PLANT);
             }
         }
         System.out.println("Трава начала расти!!!");

@@ -32,7 +32,7 @@ public class Simulation {
         if (isRunning) return;
         isRunning = true;
         System.out.println(initAnimal.getSumEatAnimal());
-        initAnimal.addAnimalWeight();
+        initAnimal.addAnimalWeight(plant);
 
         System.out.println(initAnimal.getSumEatAnimal());
 

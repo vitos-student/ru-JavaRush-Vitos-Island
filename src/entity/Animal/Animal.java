@@ -3,15 +3,18 @@ package entity.Animal;
 import entity.Island;
 import entity.Location;
 
-import java.util.concurrent.ConcurrentHashMap;
+/**
+ * Иду по упрощенной схеме. на 1 локации только 1 животное
+ * сильно логику не хочу сейчас усложнять
+ */
 
 public class Animal {
-    protected boolean isAlive ;
+    protected boolean isAlive;
     protected final String nameAnimal;
     protected final int weight;
     protected final int step;
     protected final int maxCountLocation;
-    private  int eatAnimal;
+    private int eatAnimal;
     protected final Location location;
 
     public Animal(String nameAnimal, int weight, int step, int maxCountLocation, int eatAnimal, Location location) {
@@ -24,16 +27,20 @@ public class Animal {
         this.location = location;
     }
 
-    public void initAnimal(String name, Island island){
+    public void initAnimal(String name, Island island) {
         System.out.println("Создаем животное:" + name);
-      //  this.locations=locations;
+        //  this.locations=locations;
     }
 
-    public void moveAnimal(){}
+    public void moveAnimal() {
+    }
 
-    public void eatAnimal(){}
+    public void eatAnimal() {
+    }
 
-    public boolean isAlive() { return isAlive; }
+    public boolean isAlive() {
+        return isAlive;
+    }
 
     public String getNameAnimal() {
         return nameAnimal;
@@ -59,10 +66,18 @@ public class Animal {
         isAlive = alive;
     }
 
-    public void seteEatAnimal(int eatAnimal) {
+    /**
+     * животные кушают.
+     */
+
+    public void setEatAnimal(int eatAnimal) {
         this.eatAnimal += eatAnimal;
     }
 
+
+    public Location getLocation() {
+        return location;
+    }
 
 
 }

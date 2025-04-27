@@ -3,6 +3,7 @@ package service;
 import entity.Animal.Animal;
 import entity.Island;
 import entity.Location;
+import entity.Plant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,6 @@ public class InitAnimal {
         for (Animal animal1 : animal) {
             sumW += animal1.getWeight();
         }
-        ;
         return sumW;
     }
 
@@ -40,9 +40,11 @@ public class InitAnimal {
         return sumW;
     }
 
-    public void addAnimalWeight() {
+    public void addAnimalWeight(Plant plant) {
         for (Animal animal1 : animal) {
-            animal1.seteEatAnimal(1);
+            Location loc= animal1.getLocation();
+          // int w = plant.get(loc.getClass());
+            animal1.setEatAnimal(1);
         }
     }
 }

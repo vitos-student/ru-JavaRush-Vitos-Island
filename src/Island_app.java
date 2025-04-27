@@ -8,7 +8,7 @@ public class Island_app {
         Island island = new Island();
         island.initLocation();
         Plant plant = new Plant(island.getLocations());/** создаем траву на острове*/
-        plant.initPlant();
+        plant.initPlant(island.getLocations());
         Simulation simulation = new Simulation(island); // Создание движка симуляции
         simulation.startSimulation();
 
