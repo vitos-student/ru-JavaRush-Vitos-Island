@@ -18,13 +18,13 @@ public class Simulation {
     private final AtomicInteger countDay = new AtomicInteger();
     Plant plant;
     Statistic statistic = new Statistic();
-    InitAnimal initAnimal ;
+    InitAnimal initAnimal;
 
     public Simulation(Island island) {
 
         this.island = island;
-        this.plant = new Plant(island.getLocations());
-        this.initAnimal=new InitAnimal(island);
+        this.plant = new Plant();
+        this.initAnimal = new InitAnimal(island);
     }
 
 
@@ -51,14 +51,8 @@ public class Simulation {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        //  System.out.println("Всего травы на острове: "+ island.getSumPlant());
-
     }
 
-
-//    public void addPlant2(){
-//        plantsSim.forEach((key, value) -> plantsSim.compute(key, (k, v) -> v + 10));
-//    }
 
     public void stopSimulation() {
         isRunning = false;

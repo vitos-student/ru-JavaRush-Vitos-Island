@@ -43,7 +43,11 @@ public class InitAnimal {
     public void addAnimalWeight(Plant plant) {
         for (Animal animal1 : animal) {
             Location loc= animal1.getLocation();
-          // int w = plant.get(loc.getClass());
+            System.out.println("TESTTTTTTTTTTT"+ loc);
+          //int w;
+           // w = plant.getValue(loc);
+            System.out.println("TESTTTTTTTTTTT"+ plant.getValue(loc));
+
             animal1.setEatAnimal(1);
         }
     }

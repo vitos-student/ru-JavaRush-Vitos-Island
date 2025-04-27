@@ -13,15 +13,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Plant {
     private  final ConcurrentHashMap<Class<? extends Location>, Integer> plantsS = new ConcurrentHashMap<>();
-    private  final Location[][] locationsPlant;
+   // private  final Location[][] locationsPlant;
 
-    public Location getLocationsPlant(int x,int y) {
-        return locationsPlant[x][y];
-    }
-
-    public Plant(Location[][] locations) {
-        this.locationsPlant = locations;
-    }
+//    public Location getLocationsPlant(int x,int y) {
+//        return locationsPlant[x][y];
+//    }
+//
+//    public Plant(Location[][] locations) {
+//        this.locationsPlant = locations;
+//    }
 
     public int getSumPlant() {
         int sum = 0;
@@ -54,6 +54,10 @@ public class Plant {
     public ConcurrentHashMap<Class<? extends Location>, Integer> getPlantsS() {
         return plantsS;
     }
+
+    public int getValue(Location location){
+        Class<? extends Location> locationClass = location.getClass();
+        return plantsS.getOrDefault(locationClass, 0).intValue();    }
 
 
 }

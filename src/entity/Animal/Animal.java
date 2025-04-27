@@ -6,6 +6,7 @@ import entity.Location;
 /**
  * Иду по упрощенной схеме. на 1 локации только 1 животное
  * сильно логику не хочу сейчас усложнять
+ * пока будут только животные кушающие траву
  */
 
 public class Animal {
@@ -73,7 +74,6 @@ public class Animal {
     public void setEatAnimal(int eatAnimal) {
         this.eatAnimal += eatAnimal;
     }
-
 
     public Location getLocation() {
         return location;

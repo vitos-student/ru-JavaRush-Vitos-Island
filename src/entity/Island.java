@@ -7,8 +7,6 @@ public class Island {
     private int y = ConfigVar.Y;
     public Location[][] locations;
 
-   // private final ConcurrentHashMap<Class<? extends Location>, Integer> plants = new ConcurrentHashMap<>();
-
     public Island() {
         this.locations = new Location[x][y];
         System.out.println("Остров создан");
@@ -24,6 +22,10 @@ public class Island {
 
     public Location[][] getLocations() {
         return locations;
+    }
+
+    public Location getLocationsIsland(int x,int y) {
+       return locations[x][y];
     }
 
 }
