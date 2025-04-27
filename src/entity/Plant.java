@@ -12,16 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 public class Plant {
-    private  final ConcurrentHashMap<Class<? extends Location>, Integer> plantsS = new ConcurrentHashMap<>();
-   // private  final Location[][] locationsPlant;
-
-//    public Location getLocationsPlant(int x,int y) {
-//        return locationsPlant[x][y];
-//    }
-//
-//    public Plant(Location[][] locations) {
-//        this.locationsPlant = locations;
-//    }
+    private  final ConcurrentHashMap<Location, Integer> plantsS = new ConcurrentHashMap<>();
 
     public int getSumPlant() {
         int sum = 0;
@@ -31,33 +22,17 @@ public class Plant {
         return sum;
     }
 
-    public void initPlant(Location[][] location) {
+    public  Plant(Location[][] location) {
         for(Location[] locY:location){
             for(Location locXY:locY){
-                plantsS.put(locXY.getClass(), ConfigVar.WEIGHT_PLANT);
+                plantsS.put(locXY, ConfigVar.WEIGHT_PLANT);
             }
         }
         System.out.println("Трава начала расти!!!");
     }
 
-    /**
-     * рост травы от 0 до 100
-     */
-    public void addPlant() {
-        plantsS.forEach((key, value) -> {
-            if (value <= 90) {
-                plantsS.compute(key, (k, v) -> v + 10);
-            }
-        });
+    public ConcurrentHashMap<Location, Integer> getPlantsS() {
+        return this.plantsS;
     }
-
-    public ConcurrentHashMap<Class<? extends Location>, Integer> getPlantsS() {
-        return plantsS;
-    }
-
-    public int getValue(Location location){
-        Class<? extends Location> locationClass = location.getClass();
-        return plantsS.getOrDefault(locationClass, 0).intValue();    }
-
 
 }

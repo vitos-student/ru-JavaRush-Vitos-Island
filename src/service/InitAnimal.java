@@ -18,7 +18,6 @@ public class InitAnimal {
         for (Location[] loc : island.getLocations()) {
             for (Location locXY : loc) {
                 this.animal.add(new Animal("COW", 1, 1, 1, 1, locXY));
-                System.out.println(locXY);
             }
         }
     }
@@ -43,11 +42,6 @@ public class InitAnimal {
     public void addAnimalWeight(Plant plant) {
         for (Animal animal1 : animal) {
             Location loc= animal1.getLocation();
-            System.out.println("TESTTTTTTTTTTT"+ loc);
-          //int w;
-           // w = plant.getValue(loc);
-            System.out.println("TESTTTTTTTTTTT"+ plant.getValue(loc));
-
             animal1.setEatAnimal(1);
         }
     }

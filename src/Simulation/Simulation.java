@@ -3,6 +3,7 @@ package Simulation;
 import entity.Island;
 import entity.Plant;
 import service.InitAnimal;
+import service.ServicePlant;
 import service.Statistic;
 
 import java.util.concurrent.Executors;
@@ -19,18 +20,23 @@ public class Simulation {
     Plant plant;
     Statistic statistic = new Statistic();
     InitAnimal initAnimal;
+    ServicePlant servicePlant;
 
-    public Simulation(Island island) {
 
+    public Simulation(Island island,Plant plants) {
         this.island = island;
-        this.plant = new Plant();
+        this.plant = plants;
         this.initAnimal = new InitAnimal(island);
+        this.servicePlant = new ServicePlant(plant);
     }
 
 
     public void startSimulation() {
         if (isRunning) return;
         isRunning = true;
+
+
+
         System.out.println(initAnimal.getSumEatAnimal());
         initAnimal.addAnimalWeight(plant);
 
@@ -41,7 +47,7 @@ public class Simulation {
 
         scheduledExecutorService.scheduleAtFixedRate(
                 //()->addPlant2(),
-                () -> plant.addPlant(),
+                () -> servicePlant.addPlant(),
                 1,
                 5,
                 TimeUnit.SECONDS);
