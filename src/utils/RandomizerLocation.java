@@ -1,12 +1,10 @@
 package utils;
 
-import entity.Location;
-import repository.ConfigVar;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomizerLocation {
 
-    public int getLocation()
-    {
-        return  (int)(Math.random()* ConfigVar.X);
+    public int nextInt(int stepAnimal) {
+        return ThreadLocalRandom.current().nextInt(3);
     }
 }

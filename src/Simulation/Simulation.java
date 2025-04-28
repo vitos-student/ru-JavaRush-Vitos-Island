@@ -42,7 +42,7 @@ public class Simulation {
         scheduledExecutorService.scheduleAtFixedRate(
                 () -> servicePlant.addPlant(),
                 1,
-                5,
+                1,
                 TimeUnit.SECONDS);
 
         scheduledExecutorService.scheduleAtFixedRate(
@@ -51,14 +51,17 @@ public class Simulation {
                 5,
                 TimeUnit.SECONDS);
 
-
+        scheduledExecutorService.scheduleAtFixedRate(
+                () -> serviceAnimal. moveAnimal(serviceAnimal),
+                1,
+                5,
+                TimeUnit.SECONDS);
         try {
             TimeUnit.MINUTES.sleep(1);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
-
 
     public void stopSimulation() {
         isRunning = false;
